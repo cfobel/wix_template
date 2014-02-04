@@ -10,28 +10,28 @@ The contents of this project are collected from [here][2].
 
 The example directory structure from [here][2] is:
 
-    SuperForm.Install
-    SuperForm.Install/CustomActions/
-    SuperForm.Install/CustomActions/ProductKeyCheck.wxs
-    SuperForm.Install/CustomDialogs/LicenseAgreementDialogOverwritten.wxs
-    SuperForm.Install/CustomDialogs/
-    SuperForm.Install/CustomDialogs/ProductKeyCheckDialog.wxs
-    SuperForm.Install/CustomDialogs/ProductKeyCheckInvalidDialog.wxs
-    SuperForm.Install/Fragments/
-    SuperForm.Install/Fragments/FilesFragments.wxs
-    SuperForm.Install/Fragments/RegistryFragments.wxs
-    SuperForm.Install/Includes/
-    SuperForm.Install/Includes/SuperFormVariables.wxi
-    SuperForm.Install/Lang/
-    SuperForm.Install/Lang/en-us/
-    SuperForm.Install/Lang/en-us/EULA_en-us.rtf
-    SuperForm.Install/Lang/en-us/Loc_en-us.wxl
-    SuperForm.Install/Packages/
-    SuperForm.Install/Packages/en-us/
-    SuperForm.Install/Packages/en-us/SuperForm.Install.msi
-    SuperForm.Install/Resources/
-    SuperForm.Install/Resources/Exclam.ico
-    SuperForm.Install/SuperForm.wxs
+    App.Install
+    App.Install/CustomActions/
+    App.Install/CustomActions/ProductKeyCheck.wxs
+    App.Install/CustomDialogs/LicenseAgreementDialogOverwritten.wxs
+    App.Install/CustomDialogs/
+    App.Install/CustomDialogs/ProductKeyCheckDialog.wxs
+    App.Install/CustomDialogs/ProductKeyCheckInvalidDialog.wxs
+    App.Install/Fragments/
+    App.Install/Fragments/FilesFragments.wxs
+    App.Install/Fragments/RegistryFragments.wxs
+    App.Install/Includes/
+    App.Install/Includes/AppVariables.wxi
+    App.Install/Lang/
+    App.Install/Lang/en-us/
+    App.Install/Lang/en-us/EULA_en-us.rtf
+    App.Install/Lang/en-us/Loc_en-us.wxl
+    App.Install/Packages/
+    App.Install/Packages/en-us/
+    App.Install/Packages/en-us/App.Install.msi
+    App.Install/Resources/
+    App.Install/Resources/Exclam.ico
+    App.Install/App.wxs
 
 The following section describes each directory in the tree above.
 
@@ -65,13 +65,13 @@ From the [website][2]:
 >     * `en-us`: stores the English MSI installer.
 >   * `Resources`
 >     * Stores different resources like icons, jpg's, etc' used in the installer.
->   * `SuperForm.wxs`
+>   * `App.wxs`
 >     * Master installer files where all the magic happens.
 >
 > We also need to include some references:
 >
->   * `SuperForm.CustomAction`
->     * Needed to run our custom actions stored in the `SuperForm.CustomAction.dll` project
+>   * `App.CustomAction`
+>     * Needed to run our custom actions stored in the `App.CustomAction.dll` project
 >   * `WixNetFxExtension`
 >     * Needed for conditional check if `.Net 3.5` is installed and abort if not.
 >   * `WixUIExtension`
