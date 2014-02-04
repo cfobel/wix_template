@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Include>
   <!--
-  Versioning. These have to be changed for upgrades.
-  It's not enough to just include newer files.
+  # Versioning #
+
+  The version number has to be changed for upgrades. _It's not enough to just
+  include newer files_.
   -->
   <?define MajorVersion="1" ?>
   <?define MinorVersion="0" ?>
@@ -17,13 +19,19 @@
   -->
   <?define UpgradeCode="YOUR-GUID-HERE" ?>
   <!--
-  Path to the resources directory. resources don't really need to be included
+  Path to the resources directory.  Resources don't really need to be included
   in the project structure but I like to include them for for clarity
   -->
   <?define ResourcesDir="$(var.ProjectDir)\Resources" ?>
   <!--
-  The name of your application exe file. This will be used to kill the process when updating
-  and creating the desktop shortcut
+  The name of your application exe file. This will be used to kill the process
+  when updating and creating the desktop shortcut
   -->
   <?define ExeProcessName="App.MainApp.exe" ?>
+  <?define IconPath="$(var.ResourcesDir)\App.ico" ?>
+  <!--
+  A short label for your application, containing no-spaces, and no characters
+  that are not allowed in file-names.
+  -->
+  <?define AppShortName="MyApp" ?>
 </Include>

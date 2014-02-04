@@ -16,31 +16,7 @@
       <UpgradeVersion OnlyDetect="yes" Minimum="$(var.VersionNumber)" IncludeMinimum="no" Property="NEWER_VERSION_FOUND" />
       <UpgradeVersion Minimum="0.0.0.0" IncludeMinimum="yes" Maximum="$(var.VersionNumber)" IncludeMaximum="no" Property="OLDER_VERSION_FOUND" />
     </Upgrade>
-    <!-- Reference the global NETFRAMEWORK35 property to check if it exists -->
-    <PropertyRef Id="NETFRAMEWORK35"/>
-    <!--
-    Startup conditions that checks if .Net Framework 3.5 is installed or if
-    we're running the OS higher than Windows XP SP2.
-    If not the installation is aborted.
-    By doing the (Installed OR ...) property means that this condition will only
-    be evaluated if the app is being installed and not on uninstall or changing
-    -->
-    <Condition Message="!(loc.DotNetFrameworkNeeded)">
-      <![CDATA[Installed OR NETFRAMEWORK35]]>
-    </Condition>
-    <Condition Message="!(loc.AppNotSupported)">
-      <![CDATA[Installed OR ((VersionNT >= 501 AND ServicePackLevel >= 2) OR (VersionNT >= 502))]]>
-    </Condition>
-    <!--
-    This custom action in the InstallExecuteSequence is needed to
-    stop silent install (passing /qb to msiexec) from going around it.
-    -->
-    <CustomAction Id="NewerVersionFound" Error="!(loc.AppNewerVersionInstalled)" />
     <InstallExecuteSequence>
-      <!-- Check for newer versions with FindRelatedProducts and execute the custom action after it -->
-      <Custom Action="NewerVersionFound" After="FindRelatedProducts">
-        <![CDATA[NEWER_VERSION_FOUND]]>
-      </Custom>
       <!-- Remove the previous versions of the product -->
       <RemoveExistingProducts After="InstallInitialize"/>
       <!-- WixCloseApplications is a built in custom action that uses util:CloseApplication below -->
@@ -58,8 +34,8 @@
       <!-- Here we'll add the GUI logic for installation and updating in a future post-->
     </UI>
     <!-- Set the icon to show next to the program name in Add/Remove programs -->
-    <Icon Id="AppIcon.ico" SourceFile="$(var.ResourcesDir)\Exclam.ico" />
-    <Property Id="ARPPRODUCTICON" Value="AppIcon.ico" />
+    <Icon Id="$(var.AppShortName)Icon.ico" SourceFile="$(var.IconPath)" />
+    <Property Id="ARPPRODUCTICON" Value="$(var.AppShortName)Icon.ico" />
     <!-- Installer UI custom pictures. File names are made up. Add path to your pics. -->
     <!--
     <WixVariable Id="WixUIDialogBmp" Value="MyAppLogo.jpg" />
